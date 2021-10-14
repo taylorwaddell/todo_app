@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
+import Layout from './pages/Layout';
 
 function App() {
   return (
-    <p>
-      Cleanedup React App
-    </p>
+    <>
+      <Layout />
+    </>
   );
 }
 

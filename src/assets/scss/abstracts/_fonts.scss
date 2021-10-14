@@ -1,0 +1,46 @@
+/*---DEPENDENCIES
+=============================*/
+//Open Sans (300, 400, 600, 800) ---v
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+//Roboto Mono (300, 400, 600, 700) ---v
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600;700&display=swap');
+
+/*---VARIABLES
+=============================*/
+//fonts
+$font-primary: 'Open Sans', serif, arial;
+$font-secondary: 'Roboto Mono', monospace, 'Courier New';
+//weights
+$fw-light: 300;
+$fw-regular: 400;
+$fw-bold: 600;
+$fw-black: 700;
+
+/*---CLASSES
+=============================*/
+//fonts
+.font-primary {
+    font-family: $font-primary;
+}
+
+.font-secondary {
+    font-family: $font-secondary;
+}
+
+//font weights
+.fw-light {
+    font-weight: $fw-light;
+}
+
+.fw-regular {
+    font-weight: $fw-regular;
+}
+
+.fw-bold {
+    font-weight: $fw-bold;
+}
+
+.fw-black {
+    font-weight: $fw-black;
+}
+

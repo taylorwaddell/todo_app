@@ -1,0 +1,39 @@
+/*---VARIABLES
+=============================*/
+$light: #E9EBFA;
+$dark: #121212;
+$danger: #FDAB96;
+$success: #85DFC5;
+$warning: #F9C695;
+
+/*---CLASSES
+=============================*/
+//background colors
+.bg-light {
+  background-color: $light;
+}
+
+.bg-dark {
+  background-color: $dark;
+}
+
+.bg-danger {
+  background-color: $danger;
+}
+
+.bg-success {
+  background-color: $success;
+}
+
+.bg-warning {
+  background-color: $warning;
+}
+
+//text colors
+.text-light {
+  color: $light;
+}
+
+.text-dark {
+  color: $dark;
+}

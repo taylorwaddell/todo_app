@@ -1,0 +1,9 @@
+/*---DEPENDENCIES
+=============================*/
+@use "../abstracts/colors" as *;
+
+/*---GLOBAL STYLES
+=============================*/
+html {
+    background-color: $dark;
+}
