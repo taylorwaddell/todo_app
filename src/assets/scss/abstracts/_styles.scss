@@ -1,0 +1,28 @@
+//VARIABLES ------------V
+//border radius---|
+$br-round: 10px;
+$br-rounder: 20px;
+$br-circle: 50%;
+$br-barely: 2px;
+$br-none: none;
+
+//CLASSES -------------V
+.br-round {
+  border-radius: $br-round;
+}
+
+.br-rounder {
+  border-radius: $br-rounder;
+}
+
+.br-circle {
+  border-radius: $br-circle;
+}
+
+.br-barely {
+  border-radius: $br-barely;
+}
+
+.br-none {
+  border-radius: $br-none;
+}

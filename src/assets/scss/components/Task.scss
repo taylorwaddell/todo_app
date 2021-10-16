@@ -1,0 +1,129 @@
+@use "../abstracts/colors" as *;
+@use "../abstracts/styles" as *;
+
+.task-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 375px;
+  border: 2px solid $color-light;
+  border-radius: $br-round;
+  color: $color-light;
+  background-color: lighten($color: $color-dark, $amount: 10%);
+  transition: ease-in-out 250ms;
+
+  &:hover {
+    transform: scale(1.01);
+    background-color: lighten($color: $color-dark, $amount: 12%);
+  }
+}
+
+.task-leftSide {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.task-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.task-date {
+}
+
+.check-box {
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 10px;
+    background: $color-light;
+    border-radius: 20px;
+    border: 1px solid $color-light;
+    box-sizing: content-box;
+    line-height: 16px;
+    vertical-align: sub;
+    position: relative;
+  }
+  input[type="checkbox"]:checked {
+    border: 1px solid $color-success;
+  }
+  input[type="checkbox"]:checked:after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    background: $color-success;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+  input[type="checkbox"]:hover {
+    cursor: pointer;
+  }
+}
+
+.task-title {
+  margin: 0;
+  margin-right: 0.5em;
+}
+
+.task-link {
+  background-color: $color-warning;
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+  display: inline-block;
+  padding: 0.5em 1em;
+
+  &:hover {
+    background-color: $color-success;
+  }
+
+  a {
+    text-decoration: none;
+    color: $color-dark;
+  }
+}
+
+.task-sideBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+}
+
+.task-tag {
+}
+
+.task-edit {
+}
+
+.biPencil {
+  color: $color-light;
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+
+  &:hover {
+    color: $color-warning;
+  }
+}
+
+.task-remove {
+}
+
+.biTrash {
+  color: $color-light;
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+
+  &:hover {
+    color: $color-danger;
+  }
+}

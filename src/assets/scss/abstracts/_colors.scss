@@ -1,39 +1,39 @@
 /*---VARIABLES
 =============================*/
-$light: #E9EBFA;
-$dark: #121212;
-$danger: #FDAB96;
-$success: #85DFC5;
-$warning: #F9C695;
+$color-light: #e9ebfa;
+$color-dark: #121212;
+$color-danger: #fdab96;
+$color-success: #85dfc5;
+$color-warning: #f9c695;
 
 /*---CLASSES
 =============================*/
 //background colors
 .bg-light {
-  background-color: $light;
+  background-color: $color-light;
 }
 
 .bg-dark {
-  background-color: $dark;
+  background-color: $color-dark;
 }
 
 .bg-danger {
-  background-color: $danger;
+  background-color: $color-danger;
 }
 
 .bg-success {
-  background-color: $success;
+  background-color: $color-success;
 }
 
 .bg-warning {
-  background-color: $warning;
+  background-color: $color-warning;
 }
 
 //text colors
 .text-light {
-  color: $light;
+  color: $color-light;
 }
 
 .text-dark {
-  color: $dark;
+  color: $color-dark;
 }
