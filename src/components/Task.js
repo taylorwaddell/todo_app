@@ -18,7 +18,7 @@ function Task({
       <div className="task-container">
         <div className="task-leftSide">
           <div className="task-date">
-            {taskDate}
+            Due: {taskDate}
             {/**
              * if (taskDate) add due date
              */}
@@ -57,7 +57,7 @@ function Task({
           </div>
 
           <div className="task-remove">
-             <BiTrash className="biTrash" />
+            <BiTrash className="biTrash" />
           </div>
         </div>
       </div>

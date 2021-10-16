@@ -1,12 +1,12 @@
 import React from "react";
 import "../assets/scss/pages/Layout.scss";
-import Task from "../components/Task";
+import TaskList from "../components/TaskList";
 
 function Layout() {
   return (
-    <>
-      <Task />
-    </>
+    <div className="layout-container">
+      <TaskList />
+    </div>
   );
 }
 
