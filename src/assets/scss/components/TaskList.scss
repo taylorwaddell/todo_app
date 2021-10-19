@@ -9,9 +9,9 @@
   max-width: 375px;
   max-height: 97vh;
   overflow: auto;
-  border: 2px solid $color-light;
-  border-radius: $br-barely;
-  padding: 10px 10px;
+  border: 2px solid rgba($color-light, .5);
+  border-radius: $br-round;
+  padding: 15px;
   margin: 0;
 
   &::-webkit-scrollbar {

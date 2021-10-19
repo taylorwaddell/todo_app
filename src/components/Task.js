@@ -1,56 +1,44 @@
 /*---DEPENDENCIES
 =============================*/
-import React from "react";
+import React, { useState } from "react";
+import { PropTypes } from "prop-types";
 import "../assets/scss/components/Task.scss";
 import { BiTrash, BiPencil } from "react-icons/bi";
 
 /*---FUNCTION
 =============================*/
-function Task({
-  isComplete = false,
-  taskTitle = "Order on amazon the dog's pants",
-  taskLink = "https://tinyurl.com/489r85kw",
-  taskDate = "10/23/2021",
-  taskTag = "🐕",
-}) {
+function Task(props) {
+  const [isComplete, setIsComplete] = useState(false);
+  const completeTask = (e) => setIsComplete((isComplete) => !isComplete);
   return (
     <>
-      <div className="task-container">
+      <div className={`task-container ${isComplete && "task-completed"}`}>
         <div className="task-leftSide">
-          <div className="task-date">
-            Due: {taskDate}
-            {/**
-             * if (taskDate) add due date
-             */}
-          </div>
+          {props.taskDate && (
+            <div className="task-date">Due: {props.taskDate}</div>
+          )}
           <div className="task-content">
             <div className="check-box">
-              <input type="checkbox" id="complete" value="true" /> {" "}
-              <label for="complete"></label>
-              {/**
-               * if (isComplete) put red fill circle
-               * else put white outline circle
-               */}
+              <input
+                type="checkbox"
+                id="complete"
+                value="true"
+                onClick={completeTask}
+              />
+              <label htmlFor="complete"></label>
             </div>
 
-            <div className="task-title">{taskTitle}</div>
-
-            <div className="task-link">
-              <a href={taskLink}>Link</a>
-              {/**
-               * if (taskLink) add link button
-               */}
-            </div>
+            <div className="task-title">{props.taskTitle}</div>
+            {props.taskLink && (
+              <div className="task-link">
+                <a href={props.taskLink}>Link</a>
+              </div>
+            )}
           </div>
         </div>
 
         <div className="task-sideBar">
-          <div className="task-tag">
-            {taskTag}
-            {/**
-             * if (taskTag) add tag
-             */}
-          </div>
+          {props.taskTag && <div className="task-tag">{props.taskTag}</div>}
 
           <div className="task-edit">
             <BiPencil className="biPencil" />
@@ -64,5 +52,13 @@ function Task({
     </>
   );
 }
+
+Task.propTypes = {
+  isComplete: PropTypes.bool,
+  taskTitle: PropTypes.string.isRequired,
+  taskLink: PropTypes.string,
+  taskDate: PropTypes.string,
+  taskTag: PropTypes.string,
+};
 
 export default Task;

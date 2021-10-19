@@ -4,23 +4,27 @@
 .task-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   border: 2px solid $color-light;
   border-radius: $br-round;
   color: $color-light;
-  background-color: lighten($color: $color-dark, $amount: 10%);
   transition: ease-in-out 250ms;
   margin-top: 10px;
 
   &:hover {
     transform: scale(1.01);
-    background-color: lighten($color: $color-dark, $amount: 12%);
+    background-color: rgba($color-light, 0.025);
   }
 
   &:first-child {
     margin: 0;
-
   }
+}
+
+.task-completed {
+  text-decoration: line-through;
 }
 
 .task-leftSide {
@@ -36,6 +40,8 @@
 }
 
 .task-date {
+  margin-bottom: 10px;
+  color: $color-danger;
 }
 
 .check-box {
@@ -104,6 +110,11 @@
   display: flex;
   flex-direction: column;
   justify-content: right;
+  padding: 10px;
+
+  & > * {
+    padding: 5px;
+  }
 }
 
 .task-tag {

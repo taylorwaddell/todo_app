@@ -1,6 +1,7 @@
 /*---DEPENDENCIES
 =============================*/
 @use "../abstracts/colors" as *;
+@use "../abstracts/fonts" as *;
 
 /*---RESET
 =============================*/
@@ -120,4 +121,5 @@ html {
   height: 100%;
   width: 100%;
   margin: 0;
+  font-family: $font-primary;
 }
