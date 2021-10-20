@@ -17,6 +17,7 @@ function TaskPopUp({ handleClose, isEdit=false }) {
           <InputField inputType="link" fieldName="link" />
           <InputField inputType="date" fieldName="date" />
           <InputField inputType="tag" fieldName="tag" />
+          <button type="submit" className="bg-success">Add Task</button>
         </div>
       </div>
     </>
