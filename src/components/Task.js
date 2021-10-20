@@ -54,7 +54,7 @@ function Task(props) {
 }
 
 Task.propTypes = {
-  isComplete: PropTypes.bool,
+/*  isComplete: PropTypes.bool, */
   taskTitle: PropTypes.string.isRequired,
   taskLink: PropTypes.string,
   taskDate: PropTypes.string,

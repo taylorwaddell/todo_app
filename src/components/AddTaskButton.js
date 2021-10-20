@@ -1,7 +1,16 @@
-import React from 'react';
+import React from "react";
 import "../assets/scss/components/AddTaskButton.scss";
 import { MdAddCircle } from "react-icons/md";
+import { PropTypes } from "prop-types";
 
-const AddTaskButton = () => <span className="addTaskButton"><MdAddCircle size={42} /></span>
+const AddTaskButton = ({ handleClick }) => (
+  <span className="addTaskButton" onClick={handleClick}>
+    <MdAddCircle size={42} />
+  </span>
+);
 
-export default AddTaskButton
+AddTaskButton.propTypes = {
+  handleClick: PropTypes.func,
+};
+
+export default AddTaskButton;
