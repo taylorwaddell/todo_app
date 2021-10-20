@@ -24,6 +24,15 @@
 }
 
 .task-completed {
+  opacity: 0.5;
+  
+  &:hover {
+    transform: none;
+    background-color: transparent;
+  }
+}
+
+.task-completed-strikethrough {
   text-decoration: line-through;
 }
 

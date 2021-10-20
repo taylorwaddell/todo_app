@@ -15,7 +15,7 @@ function Task(props) {
       <div className={`task-container ${isComplete && "task-completed"}`}>
         <div className="task-leftSide">
           {props.taskDate && (
-            <div className="task-date">Due: {props.taskDate}</div>
+            <div className={`task-date ${isComplete && "task-completed-strikethrough"}`}>Due: {props.taskDate}</div>
           )}
           <div className="task-content">
             <div className="check-box">
@@ -28,7 +28,7 @@ function Task(props) {
               <label htmlFor="complete"></label>
             </div>
 
-            <div className="task-title">{props.taskTitle}</div>
+            <div className={`task-title ${isComplete && "task-completed-strikethrough"}`}>{props.taskTitle}</div>
             {props.taskLink && (
               <div className="task-link">
                 <a href={props.taskLink}>Link</a>
