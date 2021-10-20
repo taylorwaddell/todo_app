@@ -1,0 +1,21 @@
+@use "../abstracts/colors" as *;
+@use "../abstracts/fonts" as *;
+@use "../abstracts/styles" as *;
+
+button {
+  border-style: none;
+  padding: 1em 2em;
+  cursor: pointer;
+  font-family: $font-primary;
+  font-weight: 600;
+  border-radius: $br-round;
+
+  &:hover {
+    background-color: darken($color: $color-success, $amount: 10);
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.25;
+}
