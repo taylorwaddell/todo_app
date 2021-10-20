@@ -1,4 +1,19 @@
-@use "../abstracts/colors";
-@use "../abstracts/fonts";
-@use "../abstracts/styles";
+@use "../abstracts/colors" as *;
+@use "../abstracts/fonts" as *;
+@use "../abstracts/styles" as *;
 
+.addTask-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: $br-round;
+    background-color: $color-dark;
+    box-shadow: 0 0 3px rgba(black, 0.5); //ADJUST
+    
+}
+
+.addTask-topBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
