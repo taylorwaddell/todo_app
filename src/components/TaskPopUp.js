@@ -14,17 +14,22 @@ function TaskPopUp({ handleClose, isEdit = false }) {
       <div className="popUpBackground">
         <div className="addTask-container">
           <div className="addTask-topBar">
-            <h1>{isEdit ? "Edit" : "Add"} Task</h1>
-            <div
-              className="close-window"
-              onClick={handleClose}
-            >
-              <AiFillCloseCircle />
+            <div className="close-window" onClick={handleClose}>
+              <AiFillCloseCircle className="text-danger AiFillCloseCircle" />
             </div>
           </div>
           <div className="addTask-inputContainer">
-            <InputField inputType="full-name" fieldName="name" placeHolder="task name" />
-            <InputField inputType="link" fieldName="link" placeHolder="task link" />
+            <h1>{isEdit ? "Edit" : "Add"} Task</h1>
+            <InputField
+              inputType="full-name"
+              fieldName="name"
+              placeHolder="task name"
+            />
+            <InputField
+              inputType="link"
+              fieldName="link"
+              placeHolder="task link"
+            />
             <InputField inputType="date" fieldName="date" />
             <InputField inputType="tag" fieldName="tag" />
             <Button

@@ -12,6 +12,7 @@
   border-radius: $br-round;
   background-color: $color-dark;
   color: $color-light;
+  width: 100%;
   &::placeholder {
     color: rgba($color-light, 0.5);
   }
