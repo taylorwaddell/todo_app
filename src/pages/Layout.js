@@ -11,7 +11,7 @@ function Layout() {
   return (
     <div className="layout-container">
       <TaskList isCompleted={false} taskList={sampleTaskList} />
-      {taskPopIsOpen && <TaskPopUp />}
+      {taskPopIsOpen && <TaskPopUp handleClose={handleAddClick} />}
       {!taskPopIsOpen && <AddTaskButton handleClick={handleAddClick} />}
     </div>
   );

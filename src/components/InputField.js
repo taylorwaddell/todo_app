@@ -4,33 +4,34 @@ import "../assets/scss/components/InputField.scss";
 
 import tagOptions from "./_tagOptions";
 
-function InputField(props) {
+function InputField({ inputType = "", fieldName = "", placeHolder = "" }) {
+  const givenPlaceHolder = placeHolder
+    ? `${placeHolder}`
+    : inputType === "full-name"
+    ? "Full Name"
+    : inputType === "link" && "dabomb.com";
   return (
-    <label htmlFor={props.fieldName}>
-      {props.inputType === "full-name" && (
+    <label htmlFor={fieldName}>
+      {inputType === "full-name" && (
         <input
           className="custom-input"
           type="text"
-          placeholder="Full Name"
-          name={props.fieldName}
+          placeholder={givenPlaceHolder}
+          name={fieldName}
         ></input>
       )}
-      {props.inputType === "date" && (
-        <input
-          className="custom-input"
-          type="date"
-          name={props.fieldName}
-        ></input>
+      {inputType === "date" && (
+        <input className="custom-input" type="date" name={fieldName}></input>
       )}
-      {props.inputType === "link" && (
+      {inputType === "link" && (
         <input
           className="custom-input"
           type="url"
-          placeholder="dabomb.com"
-          name={props.fieldName}
+          placeholder={givenPlaceHolder}
+          name={fieldName}
         ></input>
       )}
-      {props.inputType === "tag" && (
+      {inputType === "tag" && (
         <select className="custom-input">
           {tagOptions.map((option) => (
             <option value={option}>{option}</option>
