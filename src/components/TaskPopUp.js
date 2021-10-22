@@ -6,9 +6,17 @@ import InputField from "./InputField";
 import Button from "./Button";
 
 function TaskPopUp({ handleClose, isEdit = false }) {
-  // const [formFields, setFormFields] = useState({});
-  // Create controlled form to allow disabling of submit
-  //    if there is no task title.
+  const initialState = {
+    title: "",
+    link: "",
+    date: "",
+    tag: "",
+  };
+
+  const [formFields, setFormFields] = useState({ ...initialState });
+  const handleFormChange =
+    ({ target }) => 
+    setFormFields({ ...formFields, [target.name]: target.value });
   return (
     <>
       <div className="popUpBackground">
@@ -21,17 +29,35 @@ function TaskPopUp({ handleClose, isEdit = false }) {
           <div className="addTask-inputContainer">
             <h1>{isEdit ? "Edit" : "Add"} Task</h1>
             <InputField
-              inputType="full-name"
-              fieldName="name"
+              inputType="text"
+              fieldName="title"
               placeHolder="task name"
+              value={formFields.title}
+              isRequired={true}
+              changeHandler={handleFormChange}
             />
             <InputField
               inputType="link"
               fieldName="link"
               placeHolder="task link"
+              value={formFields.link}
+              isRequired={true}
+              changeHandler={handleFormChange}
             />
-            <InputField inputType="date" fieldName="date" />
-            <InputField inputType="tag" fieldName="tag" />
+            <InputField
+              inputType="date"
+              fieldName="date"
+              value={formFields.date}
+              isRequired={true}
+              changeHandler={handleFormChange}
+            />
+            <InputField
+              inputType="tag"
+              fieldName="tag"
+              value={formFields.tag}
+              isRequired={true}
+              changeHandler={handleFormChange}
+            />
             <Button
               btnText="Add Task"
               btnType="submit"

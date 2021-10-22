@@ -4,24 +4,28 @@ import "../assets/scss/components/InputField.scss";
 
 import tagOptions from "./_tagOptions";
 
-function InputField({ inputType = "", fieldName = "", placeHolder = "" }) {
+function InputField({ inputType = "", fieldName = "", placeHolder = "", value = "", isRequired = true, changeHandler }) {
   const givenPlaceHolder = placeHolder
     ? `${placeHolder}`
-    : inputType === "full-name"
-    ? "Full Name"
+    : inputType === "text"
+    ? "Text"
     : inputType === "link" && "dabomb.com";
+  const checkIfRequired = isRequired ? "required" : '';
   return (
     <label htmlFor={fieldName}>
-      {inputType === "full-name" && (
+      {inputType === "text" && (
         <input
           className="custom-input"
           type="text"
           placeholder={givenPlaceHolder}
           name={fieldName}
+          value={value}
+          onChange={(e) => changeHandler(e)}
+          required={checkIfRequired}
         ></input>
       )}
       {inputType === "date" && (
-        <input className="custom-input" type="date" name={fieldName}></input>
+        <input className="custom-input" type="date" name={fieldName} value={value} onChange={changeHandler}></input>
       )}
       {inputType === "link" && (
         <input
@@ -29,10 +33,13 @@ function InputField({ inputType = "", fieldName = "", placeHolder = "" }) {
           type="url"
           placeholder={givenPlaceHolder}
           name={fieldName}
+          value={value}
+          onChange={changeHandler}
+          required={checkIfRequired}
         ></input>
       )}
       {inputType === "tag" && (
-        <select className="custom-input">
+        <select className="custom-input" name={fieldName} value={value} onChange={changeHandler} required={checkIfRequired} >
           {tagOptions.map((option) => (
             <option value={option}>{option}</option>
           ))}
@@ -43,8 +50,14 @@ function InputField({ inputType = "", fieldName = "", placeHolder = "" }) {
 }
 
 InputField.propTypes = {
-  inputType: PropTypes.oneOf(["full-name", "date", "link", "tag"]),
+  inputType: PropTypes.oneOf(["text", "date", "link", "tag"]),
   fieldName: PropTypes.string,
+  placeHolder: PropTypes.string,
+  value: PropTypes.string,
+  isRequired: PropTypes.bool,
+  changeHandler: PropTypes.func,
 };
+
+//placeHolder = "", value = "", isRequired = true, changeHandler
 
 export default InputField;
