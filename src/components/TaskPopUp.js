@@ -1,22 +1,16 @@
-import React, { useState } from "react";
 import { PropTypes } from "prop-types";
 import "../assets/scss/components/TaskPopUp.scss";
 import { AiFillCloseCircle } from "react-icons/ai";
 import InputField from "./InputField";
 import Button from "./Button";
 
-function TaskPopUp({ handleClose, isEdit = false }) {
-  const initialState = {
-    title: "",
-    link: "",
-    date: "",
-    tag: "",
-  };
-
-  const [formFields, setFormFields] = useState({ ...initialState });
-  const handleFormChange =
-    ({ target }) => 
-    setFormFields({ ...formFields, [target.name]: target.value });
+function TaskPopUp({
+  handleClose,
+  isEdit = false,
+  handleSubmit,
+  handleFormChange,
+  formState,
+}) {
   return (
     <>
       <div className="popUpBackground">
@@ -32,7 +26,7 @@ function TaskPopUp({ handleClose, isEdit = false }) {
               inputType="text"
               fieldName="title"
               placeHolder="task name"
-              value={formFields.title}
+              value={formState.title}
               isRequired={true}
               changeHandler={handleFormChange}
             />
@@ -40,28 +34,31 @@ function TaskPopUp({ handleClose, isEdit = false }) {
               inputType="link"
               fieldName="link"
               placeHolder="task link"
-              value={formFields.link}
+              value={formState.link}
               isRequired={true}
               changeHandler={handleFormChange}
             />
             <InputField
               inputType="date"
               fieldName="date"
-              value={formFields.date}
+              value={formState.date}
               isRequired={true}
               changeHandler={handleFormChange}
             />
             <InputField
               inputType="tag"
               fieldName="tag"
-              value={formFields.tag}
+              value={formState.tag}
               isRequired={true}
               changeHandler={handleFormChange}
             />
             <Button
               btnText="Add Task"
               btnType="submit"
-              classes={`bg-success text-dark br-round ${!formFields.title && "disabled"}`}
+              classes={`bg-success text-dark br-round ${
+                !formState.title && "disabled"
+              }`}
+              handleClick={handleSubmit}
             />
           </div>
         </div>
@@ -73,6 +70,9 @@ function TaskPopUp({ handleClose, isEdit = false }) {
 TaskPopUp.propTypes = {
   handleClose: PropTypes.func,
   isEdit: PropTypes.bool,
+  handleSubmit: PropTypes.func,
+  handleFormChange: PropTypes.func,
+  formState: PropTypes.object,
 };
 
 export default TaskPopUp;

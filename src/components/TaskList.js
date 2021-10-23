@@ -7,10 +7,10 @@ function TaskList(props) {
   const tasks = props.taskList.map((taskObj) => {
     return <Task
       isComplete={taskObj.isComplete}
-      taskTitle={taskObj.taskTitle}
-      taskLink={taskObj.taskLink}
-      taskDate={taskObj.taskDate}
-      taskTag={taskObj.taskTag}
+      taskTitle={taskObj.title}
+      taskLink={taskObj.link}
+      taskDate={taskObj.date}
+      taskTag={taskObj.tag}
     />;
   });
   return (
