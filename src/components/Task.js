@@ -9,26 +9,41 @@ import { BiTrash, BiPencil } from "react-icons/bi";
 =============================*/
 function Task(props) {
   const [isComplete, setIsComplete] = useState(false);
-  const completeTask = (e) => setIsComplete((isComplete) => !isComplete);
+  const completeTask = () => {
+    return setIsComplete((isComplete) => !isComplete);
+  };
   return (
     <>
       <div className={`task-container ${isComplete && "task-completed"}`}>
         <div className="task-leftSide">
           {props.taskDate && (
-            <div className={`task-date ${isComplete && "task-completed-strikethrough"}`}>Due: {props.taskDate}</div>
+            <div
+              className={`task-date ${
+                isComplete && "task-completed-strikethrough"
+              }`}
+            >
+              Due: {props.taskDate}
+            </div>
           )}
           <div className="task-content">
             <div className="check-box">
               <input
                 type="checkbox"
-                id="complete"
+                id={props.taskKey}
+                name="complete"
                 value="true"
                 onClick={completeTask}
               />
               <label htmlFor="complete"></label>
             </div>
 
-            <div className={`task-title ${isComplete && "task-completed-strikethrough"}`}>{props.taskTitle}</div>
+            <div
+              className={`task-title ${
+                isComplete && "task-completed-strikethrough"
+              }`}
+            >
+              {props.taskTitle}
+            </div>
             {props.taskLink && (
               <div className="task-link">
                 <a href={props.taskLink}>Link</a>
@@ -54,7 +69,7 @@ function Task(props) {
 }
 
 Task.propTypes = {
-/*  isComplete: PropTypes.bool, */
+  isComplete: PropTypes.bool,
   taskTitle: PropTypes.string.isRequired,
   taskLink: PropTypes.string,
   taskDate: PropTypes.string,

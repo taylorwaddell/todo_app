@@ -5,7 +5,7 @@ import { PropTypes } from "prop-types";
 
 const AddTaskButton = ({ handleClick }) => (
   <span className="addTaskButton" onClick={handleClick}>
-    <MdAddCircle size={42} />
+    +
   </span>
 );
 

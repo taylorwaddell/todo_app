@@ -2,23 +2,25 @@
 @use "../abstracts/fonts" as *;
 @use "../abstracts/styles" as *;
 
-.addTaskButton {
+.sideBar-container {
+  height: 100vh;
+  background-color: $color-dark;
+  border-right: 1px solid rgba($color-light, 0.25);
+  margin: 0;
+  padding: 0;
+}
+
+.sideBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
   width: 50px;
+  height: 50px;
   margin: 0;
   padding: 40px;
-  color: $color-danger;
-  font-weight: $fw-black;
-  font-size: 50px;
-  line-height: 25px;
-  cursor: pointer;
 
   &:hover {
     background-color: $color-danger;
     color: $color-dark;
-    border-right: $color-danger;
   }
 }
