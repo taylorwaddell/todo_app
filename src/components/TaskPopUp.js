@@ -61,7 +61,7 @@ function TaskPopUp({ handleClose, isEdit = false }) {
             <Button
               btnText="Add Task"
               btnType="submit"
-              classes="bg-success text-dark br-round"
+              classes={`bg-success text-dark br-round ${!formFields.title && "disabled"}`}
             />
           </div>
         </div>
