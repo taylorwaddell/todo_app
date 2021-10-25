@@ -8,9 +8,19 @@ function TaskPopUp({
   handleClose,
   isEdit = false,
   handleSubmit,
-  handleFormChange,
+  setFormFields,
   formState,
 }) {
+  const handleFormChange = ({ target }) => {
+    setFormFields({ ...formState, [target.name]: target.value });
+  };  
+  const linkRegexMatch = (link) => {
+    (!link.match(/(https|http):\/\//gm)) && setFormFields({ ...formState, [formState.link]: `pants` });
+    return (link === "" || formState.link.match(/(https|http)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/gm)) ? true : false; 
+  };
+  const validateAndSubmit = (e) => {
+    return ((formState.date === "" || formState.date.match(/^\d{2}\/\d{2}\/\d{4}/gm)) && linkRegexMatch(formState.link)) ? handleSubmit(e) : console.log("NO SIR");
+  }
   return (
     <>
       <div className="popUpBackground">
@@ -39,10 +49,11 @@ function TaskPopUp({
               changeHandler={handleFormChange}
             />
             <InputField
-              inputType="date"
+              inputType="text"
               fieldName="date"
               value={formState.date}
               isRequired={true}
+              placeHolder="MM/DD/YYYY"
               changeHandler={handleFormChange}
             />
             <InputField
@@ -58,7 +69,7 @@ function TaskPopUp({
               classes={`bg-success text-dark br-round ${
                 !formState.title && "disabled"
               }`}
-              handleClick={handleSubmit}
+              handleClick={validateAndSubmit}
             />
           </div>
         </div>

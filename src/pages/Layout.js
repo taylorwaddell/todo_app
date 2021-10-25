@@ -25,9 +25,6 @@ function Layout() {
 
   //CONTROLLED FORM INPUT
   const [formFields, setFormFields] = useState({ ...initialState });
-  const handleFormChange = ({ target }) => {
-    setFormFields({ ...formFields, [target.name]: target.value });
-  };
 
   //OPEN TASK POP UP
   const [taskPopIsOpen, setTaskPopIsOpen] = useState(false);
@@ -43,7 +40,7 @@ function Layout() {
       {taskPopIsOpen && (
         <TaskPopUp
           handleClose={handleAddClick}
-          handleFormChange={handleFormChange}
+          setFormFields={setFormFields}
           formState={formFields}
           handleSubmit={handleSubmit}
         />
