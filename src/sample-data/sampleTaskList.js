@@ -13,7 +13,7 @@ export const sampleTaskList = [
     link: "",
     date: "",
     tag: "🥇",
-    isComplete: false,
+    isComplete: true,
   },
   {
     key: 3,

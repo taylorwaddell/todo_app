@@ -12,8 +12,6 @@ function TaskList(props) {
         taskDate={taskObj.date}
         taskTag={taskObj.tag}
         taskKey={taskObj.key}
-        isComplete={taskObj.isComplete}
-        setIsComplete={props.setIsComplete}
       />
     );
   });
@@ -31,27 +29,5 @@ TaskList.propTypes = {
 
 export default TaskList;
 
-/**
-const tasks = props.taskList.map((taskObj) => {
-  return (
-    <Task
-      taskTitle={taskObj.title}
-      taskLink={taskObj.link}
-      taskDate={taskObj.date}
-      taskTag={taskObj.tag}
-      taskKey={taskObj.key}
-      isComplete={taskObj.isComplete}
-      setIsComplete={props.setIsComplete}
-    />
-  );
-});
 
-
-return new ToDo(
-      taskObj.key,
-      taskObj.title,
-      taskObj.date,
-      taskObj.tag,
-      taskObj.link
-    );
- */
+// tasks.sort((x, y) => (x.isComplete === y.isComplete) ? 0 : x? -1 : 1)
