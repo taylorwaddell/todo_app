@@ -12,11 +12,21 @@ import SideBar from "../components/SideBar";
 function Layout() {
   //CREATING NEW TASK
   const [tasks, setTasks] = useState([...sampleTaskList]);
-  const handleSubmit = (e) => setTasks([...tasks, formFields]);
+  const handleSubmit = (e) =>
+    setTasks((crrntTasks) => [
+      ...crrntTasks,
+      {
+        id: formFields.id,
+        title: formFields.title,
+        link: formFields.link,
+        date: formFields.date,
+        tag: formFields.tag,
+      },
+    ]);
 
   //EMPTY TASK FORM
   const initialState = {
-    key: tasks.length + 1,
+    id: tasks.length + 1,
     title: "",
     link: "",
     date: "",
