@@ -2,7 +2,7 @@ export const sampleTaskList = [
   {
     key: 1,
     title: "Order on amazon the dog's pants",
-    link: "https://tinyurl.com/489r85kw",
+    link: "tinyurl.com/489r85kw",
     date: "10/23/2021",
     tag: "🦑",
     isComplete: false,

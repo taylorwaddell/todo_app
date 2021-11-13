@@ -10,18 +10,29 @@ function TaskPopUp({
   handleSubmit,
   setFormFields,
   formState,
+  hasFormError,
+  setHasFormError,
 }) {
   const handleFormChange = ({ target }) => {
+    setHasFormError((current) => false);
     setFormFields({ ...formState, [target.name]: target.value });
   };
-  // // FIX VALIDATIONS
-  // const linkRegexMatch = (link) => {
-  //   (!link.match(/(https|http):\/\//gm)) && setFormFields({ ...formState, [formState.link]: `pants` });
-  //   return (link === "" || formState.link.match(/(https|http)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/gm)) ? true : false; 
-  // };
-  // const validateAndSubmit = (e) => {
-  //   return ((formState.date === "" || formState.date.match(/^\d{2}\/\d{2}\/\d{4}/gm)) && linkRegexMatch(formState.link)) ? handleSubmit(e) : console.log("NO SIR");
-  // }
+  const linkRegexMatch = (link) => {
+    return link === "" ||
+      link.match(
+        /([-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))/gm
+      )
+      ? true
+      : false;
+  };
+  const checkDateFormat = (date) => {
+    return date === "" || date.match(/^\d{2}\/\d{2}\/\d{4}/gm) ? true : false;
+  };
+  const validateAndSubmit = (e) => {
+    return checkDateFormat(formState.date) && linkRegexMatch(formState.link)
+      ? handleSubmit(e)
+      : setHasFormError((current) => true);
+  };
   return (
     <>
       <div className="popUpBackground">
@@ -33,6 +44,7 @@ function TaskPopUp({
           </div>
           <div className="addTask-inputContainer">
             <h1>{isEdit ? "Edit" : "Add"} Task</h1>
+            {/* {hasFormError && <Error message={errMessage} />} */}
             <InputField
               inputType="text"
               fieldName="title"
@@ -70,7 +82,7 @@ function TaskPopUp({
               classes={`bg-success text-dark br-round ${
                 !formState.title && "disabled"
               }`}
-              handleClick={handleSubmit}
+              handleClick={validateAndSubmit}
             />
           </div>
         </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import "../assets/scss/components/AddTaskButton.scss";
-import { MdAddCircle } from "react-icons/md";
 import { PropTypes } from "prop-types";
 
 const AddTaskButton = ({ handleClick }) => (

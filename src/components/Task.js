@@ -12,6 +12,7 @@ function Task(props) {
   const completeTask = () => {
     return setIsComplete((isComplete) => !isComplete);
   };
+  const newLink = props.taskLink && (props.taskLink.match(/(https|http):\/\//gm)) ? props.taskLink : `http://${props.taskLink}`;
   return (
     <>
       <div className={`task-container ${isComplete && "task-completed"}`}>
@@ -44,9 +45,9 @@ function Task(props) {
             >
               {props.taskTitle}
             </div>
-            {props.taskLink && (
+            {newLink && (
               <div className="task-link">
-                <a href={props.taskLink}>Link</a>
+                <a href={newLink}>Link</a>
               </div>
             )}
           </div>

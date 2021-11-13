@@ -36,6 +36,9 @@ function Layout() {
   //CONTROLLED FORM INPUT
   const [formFields, setFormFields] = useState({ ...initialState });
 
+  //FORM VALIDATION ERROR STATE
+  const [hasFormError, setHasFormError] = useState(false);
+
   //OPEN TASK POP UP
   const [taskPopIsOpen, setTaskPopIsOpen] = useState(false);
   const handleAddClick = (e) => {
@@ -53,6 +56,8 @@ function Layout() {
           setFormFields={setFormFields}
           formState={formFields}
           handleSubmit={handleSubmit}
+          hasFormError={hasFormError}
+          setHasFormError={setHasFormError}
         />
       )}
       {/* {{!taskPopIsOpen && <AddTaskButton handleClick={handleAddClick} />}} */}
