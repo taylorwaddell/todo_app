@@ -5,10 +5,8 @@ import Task from "./Task";
 
 function TaskList(props) {
   const tasks = props.taskList
-    .sort((x, y) => {
-      console.log(x.isComplete);
-      return x.isComplete === y.isComplete ? 0 : x ? -1 : 1;
-    })
+  //(x === y)? 0 : x? -1 : 1
+    .sort((x, y) => (x.isComplete === y.isComplete) ? 0 : x.isComplete ? 1 : -1)
     .map((taskObj, index) => {
       return (
         <Task

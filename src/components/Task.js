@@ -8,12 +8,7 @@ import { BiTrash, BiPencil } from "react-icons/bi";
 /*---FUNCTION
 =============================*/
 function Task(props) {
-  // below: OLD completeTask function
-  // const completeTask = () => {
-  //   return setIsComplete((isComplete) => !isComplete);
-  // };
-
-  // NEW COMPLETE TASK FUNCTION V
+  // FIX: RACING CONDITIONS
   const completeTask = (e) => {
     const task = e.target.id;
     const currentList = [...props.allTasks]
