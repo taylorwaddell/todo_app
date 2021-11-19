@@ -59,6 +59,7 @@ function Layout() {
           handleSubmit={handleSubmit}
           hasFormError={hasFormError}
           setHasFormError={setHasFormError}
+          initialFormState={initialState}
         />
       )}
       {/* {{!taskPopIsOpen && <AddTaskButton handleClick={handleAddClick} />}} */}
