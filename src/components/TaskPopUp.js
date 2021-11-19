@@ -31,7 +31,7 @@ function TaskPopUp({
   const validateAndSubmit = (e) => {
     return checkDateFormat(formState.date) && linkRegexMatch(formState.link)
       ? handleSubmit(e)
-      : setHasFormError((current) => true);
+      : setHasFormError(true);
   };
   return (
     <>

@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 // DEPENDENCIES
 import "../assets/scss/pages/Layout.scss";
-import { sampleTaskList } from "../sample-data/sampleTaskList";
 // COMPONENTS
 import AddTaskButton from "../components/AddTaskButton";
 import TaskList from "../components/TaskList";
@@ -11,7 +10,7 @@ import SideBar from "../components/SideBar";
 
 function Layout() {
   //CREATING NEW TASK
-  const [tasks, setTasks] = useState([...sampleTaskList]);
+  const [tasks, setTasks] = useState([]);
   const handleSubmit = (e) =>
     setTasks((crrntTasks) => [
       ...crrntTasks,
@@ -21,6 +20,7 @@ function Layout() {
         link: formFields.link,
         date: formFields.date,
         tag: formFields.tag,
+        isComplete: false,
       },
     ]);
 
@@ -31,6 +31,7 @@ function Layout() {
     link: "",
     date: "",
     tag: "",
+    isComplete: false,
   };
 
   //CONTROLLED FORM INPUT
@@ -48,7 +49,7 @@ function Layout() {
     <div className="layout-container">
       <div className="main-content">
         <SideBar btn1={<AddTaskButton handleClick={handleAddClick} />} />
-        <TaskList taskList={tasks} />
+        <TaskList taskList={tasks} setTasks={setTasks} />
       </div>
       {taskPopIsOpen && (
         <TaskPopUp

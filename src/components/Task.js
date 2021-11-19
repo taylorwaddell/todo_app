@@ -1,6 +1,6 @@
 /*---DEPENDENCIES
 =============================*/
-import React, { useState } from "react";
+import React from "react";
 import { PropTypes } from "prop-types";
 import "../assets/scss/components/Task.scss";
 import { BiTrash, BiPencil } from "react-icons/bi";
@@ -8,19 +8,34 @@ import { BiTrash, BiPencil } from "react-icons/bi";
 /*---FUNCTION
 =============================*/
 function Task(props) {
-  const [isComplete, setIsComplete] = useState(false);
-  const completeTask = () => {
-    return setIsComplete((isComplete) => !isComplete);
-  };
-  const newLink = props.taskLink && (props.taskLink.match(/(https|http):\/\//gm)) ? props.taskLink : `http://${props.taskLink}`;
+  // below: OLD completeTask function
+  // const completeTask = () => {
+  //   return setIsComplete((isComplete) => !isComplete);
+  // };
+
+  // NEW COMPLETE TASK FUNCTION V
+  const completeTask = (e) => {
+    const task = e.target.id;
+    const currentList = [...props.allTasks]
+    const currentState = currentList[task].isComplete
+    currentList[task].isComplete = !currentState;
+    //console.log(1, props.allTasks)
+    props.setTaskIsComplete([...currentList])
+    //console.log(2, props.allTasks)
+    //console.log(2, props.allTasks[task])
+  }
+  const newLink =
+    props.taskLink && props.taskLink.match(/(https|http):\/\//gm)
+      ? props.taskLink
+      : `http://${props.taskLink}`;
   return (
     <>
-      <div className={`task-container ${isComplete && "task-completed"}`}>
+      <div className={`task-container ${props.taskIsComplete && "task-completed"}`}>
         <div className="task-leftSide">
           {props.taskDate && (
             <div
               className={`task-date ${
-                isComplete && "task-completed-strikethrough"
+                props.taskIsComplete && "task-completed-strikethrough"
               }`}
             >
               Due: {props.taskDate}
@@ -30,7 +45,7 @@ function Task(props) {
             <div className="check-box">
               <input
                 type="checkbox"
-                id={props.taskKey}
+                id={props.taskIndex}
                 name="complete"
                 value="true"
                 onClick={completeTask}
@@ -40,7 +55,7 @@ function Task(props) {
 
             <div
               className={`task-title ${
-                isComplete && "task-completed-strikethrough"
+                props.taskIsComplete && "task-completed-strikethrough"
               }`}
             >
               {props.taskTitle}
