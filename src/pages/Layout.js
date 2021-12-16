@@ -34,8 +34,10 @@ function Layout() {
     isComplete: false,
   };
 
-  //FIND TASK FUNCTION
-  const findTaskIndex = (taskID, list) => list.findIndex(obj => obj.id === parseInt(taskID));
+  //DELETE FUNCTION
+  const deleteTask = (taskID) => {
+    setTasks(tasks.filter(el => taskID !== el.id));
+  }
 
   //CONTROLLED FORM INPUT
   const [formFields, setFormFields] = useState({ ...initialState });
@@ -52,7 +54,7 @@ function Layout() {
     <div className="layout-container">
       <div className="main-content">
         <SideBar btn1={<AddTaskButton handleClick={handleAddClick} />} />
-        <TaskList taskList={tasks} setTasks={setTasks} findTaskIndex={findTaskIndex} />
+        <TaskList taskList={tasks} setTasks={setTasks} deleteTask={deleteTask} />
       </div>
       {taskPopIsOpen && (
         <TaskPopUp

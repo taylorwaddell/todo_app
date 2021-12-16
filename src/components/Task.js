@@ -8,9 +8,6 @@ import { BiTrash, BiPencil } from "react-icons/bi";
 /*---FUNCTION
 =============================*/
 function Task(props) {
-
-  //FIX: GREEN BUTTON WHEN COMPLETED
-
   //COMPLETE TASK FUNCTION
   const completeTask = (e) => {
     props.setTasks(
@@ -89,7 +86,7 @@ function Task(props) {
           </div>
 
           <div className="task-remove">
-            <BiTrash className="biTrash" />
+            <span onClick={() => props.deleteTask(props.taskID)}><BiTrash className="biTrash" /></span>
           </div>
         </div>
       </div>

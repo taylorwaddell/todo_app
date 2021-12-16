@@ -22,10 +22,11 @@ function TaskList(props) {
           taskDate={taskObj.date}
           taskTag={taskObj.tag}
 
+          // FUNCTIONS
+          deleteTask={props.deleteTask}
+
           // STATE
           setTasks={props.setTasks}
-          taskIndex={index}
-          findTaskIndex={props.findTaskIndex}
           allTasks={props.taskList}
         />
       );
