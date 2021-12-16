@@ -9,8 +9,7 @@ import Task from "./Task";
 =============================*/
 function TaskList(props) {
   const tasks = props.taskList
-  //(x === y)? 0 : x? -1 : 1
-    .sort((x, y) => (x.isComplete === y.isComplete) ? 0 : x.isComplete ? 1 : -1)
+    .sort((x, y) => (x.isComplete === y.isComplete ? 0 : x.isComplete ? 1 : -1))
     .map((taskObj, index) => {
       return (
         <Task
@@ -21,10 +20,8 @@ function TaskList(props) {
           taskLink={taskObj.link}
           taskDate={taskObj.date}
           taskTag={taskObj.tag}
-
           // FUNCTIONS
           deleteTask={props.deleteTask}
-
           // STATE
           setTasks={props.setTasks}
           allTasks={props.taskList}
@@ -33,17 +30,15 @@ function TaskList(props) {
     });
   return (
     <>
-      <ul className="taskList-container">{tasks}
-      </ul>
+      <ul className={`${(tasks.length > 0) && "taskList-container"}`}>{tasks}</ul>
     </>
   );
 }
 
 TaskList.propTypes = {
-  // isCompleted: PropTypes.bool.isRequired,
   taskList: PropTypes.array,
+  setTask: PropTypes.func,
+  deleteTask: PropTypes.func,
 };
 
 export default TaskList;
-
-// tasks.sort((x, y) => (x.isComplete === y.isComplete) ? 0 : x? -1 : 1)

@@ -3,7 +3,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import "../assets/scss/components/Task.scss";
-import { BiTrash, BiPencil } from "react-icons/bi";
+import { BiTrash, /*BiPencil*/ } from "react-icons/bi";
 
 /*---FUNCTION
 =============================*/
@@ -20,13 +20,13 @@ function Task(props) {
         }
         return item;
       })
-      );
-    };
+    );
+  };
 
   //CHECK IF COMPLETED
   const ifCompleted = () => {
     const task = props.allTasks.find((item) => item.id === props.taskID);
-    return (task.isComplete === false) ? false : true;
+    return task.isComplete === false ? false : true;
   };
 
   //ADD HTTP TO LINK IF NEEDED
@@ -34,13 +34,11 @@ function Task(props) {
     props.taskLink && props.taskLink.match(/(https|http):\/\//gm)
       ? props.taskLink
       : `http://${props.taskLink}`;
-  
+
   // RENDER
   return (
     <>
-      <div
-        className={`task-container ${ifCompleted() && "task-completed"}`}
-      >
+      <div className={`task-container ${ifCompleted() && "task-completed"}`}>
         <div className="task-leftSide">
           {props.taskDate && (
             <div
@@ -70,7 +68,7 @@ function Task(props) {
             >
               {props.taskTitle}
             </div>
-            {newLink && (
+            {props.taskLink && (
               <div className="task-link">
                 <a href={newLink}>Link</a>
               </div>
@@ -81,12 +79,14 @@ function Task(props) {
         <div className="task-sideBar">
           {props.taskTag && <div className="task-tag">{props.taskTag}</div>}
 
-          <div className="task-edit">
+          {/* <div className="task-edit">
             <BiPencil className="biPencil" />
-          </div>
+          </div> */}
 
           <div className="task-remove">
-            <span onClick={() => props.deleteTask(props.taskID)}><BiTrash className="biTrash" /></span>
+            <span onClick={() => props.deleteTask(props.taskID)}>
+              <BiTrash className="biTrash" />
+            </span>
           </div>
         </div>
       </div>

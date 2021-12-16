@@ -36,8 +36,8 @@ function Layout() {
 
   //DELETE FUNCTION
   const deleteTask = (taskID) => {
-    setTasks(tasks.filter(el => taskID !== el.id));
-  }
+    setTasks(tasks.filter((el) => taskID !== el.id));
+  };
 
   //CONTROLLED FORM INPUT
   const [formFields, setFormFields] = useState({ ...initialState });
@@ -54,7 +54,11 @@ function Layout() {
     <div className="layout-container">
       <div className="main-content">
         <SideBar btn1={<AddTaskButton handleClick={handleAddClick} />} />
-        <TaskList taskList={tasks} setTasks={setTasks} deleteTask={deleteTask} />
+        <TaskList
+          taskList={tasks}
+          setTasks={setTasks}
+          deleteTask={deleteTask}
+        />
       </div>
       {taskPopIsOpen && (
         <TaskPopUp
@@ -67,7 +71,6 @@ function Layout() {
           initialFormState={initialState}
         />
       )}
-      {/* {{!taskPopIsOpen && <AddTaskButton handleClick={handleAddClick} />}} */}
     </div>
   );
 }
