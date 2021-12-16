@@ -26,13 +26,16 @@ function Layout() {
 
   //EMPTY TASK FORM
   const initialState = {
-    id: tasks.length + 1,
+    id: Math.floor(Math.random() * 101),
     title: "",
     link: "",
     date: "",
     tag: "",
     isComplete: false,
   };
+
+  //FIND TASK FUNCTION
+  const findTaskIndex = (taskID, list) => list.findIndex(obj => obj.id === parseInt(taskID));
 
   //CONTROLLED FORM INPUT
   const [formFields, setFormFields] = useState({ ...initialState });
@@ -49,7 +52,7 @@ function Layout() {
     <div className="layout-container">
       <div className="main-content">
         <SideBar btn1={<AddTaskButton handleClick={handleAddClick} />} />
-        <TaskList taskList={tasks} setTasks={setTasks} />
+        <TaskList taskList={tasks} setTasks={setTasks} findTaskIndex={findTaskIndex} />
       </div>
       {taskPopIsOpen && (
         <TaskPopUp

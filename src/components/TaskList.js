@@ -1,8 +1,12 @@
+/*---DEPENDENCIES
+=============================*/
 import React from "react";
 import { PropTypes } from "prop-types";
 import "../assets/scss/components/TaskList.scss";
 import Task from "./Task";
 
+/*---FUNCTION
+=============================*/
 function TaskList(props) {
   const tasks = props.taskList
   //(x === y)? 0 : x? -1 : 1
@@ -10,15 +14,18 @@ function TaskList(props) {
     .map((taskObj, index) => {
       return (
         <Task
+          // TASK INFO
+          key={taskObj.id}
           taskID={taskObj.id}
           taskTitle={taskObj.title}
           taskLink={taskObj.link}
           taskDate={taskObj.date}
           taskTag={taskObj.tag}
-          taskIsComplete={taskObj.isComplete}
-          setTaskIsComplete={props.setTasks}
+
+          // STATE
+          setTasks={props.setTasks}
           taskIndex={index}
-          //TEMPORARY DEV STUFF
+          findTaskIndex={props.findTaskIndex}
           allTasks={props.taskList}
         />
       );

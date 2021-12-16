@@ -8,29 +8,47 @@ import { BiTrash, BiPencil } from "react-icons/bi";
 /*---FUNCTION
 =============================*/
 function Task(props) {
-  // FIX: RACING CONDITIONS
+
+  //FIX: GREEN BUTTON WHEN COMPLETED
+
+  //COMPLETE TASK FUNCTION
   const completeTask = (e) => {
-    const task = e.target.id;
-    const currentList = [...props.allTasks]
-    const currentState = currentList[task].isComplete
-    currentList[task].isComplete = !currentState;
-    //console.log(1, props.allTasks)
-    props.setTaskIsComplete([...currentList])
-    //console.log(2, props.allTasks)
-    //console.log(2, props.allTasks[task])
-  }
+    props.setTasks(
+      props.allTasks.map((item) => {
+        if (item.id === parseInt(e.target.id)) {
+          return {
+            ...item,
+            isComplete: !item.isComplete,
+          };
+        }
+        return item;
+      })
+      );
+    };
+
+  //CHECK IF COMPLETED
+  const ifCompleted = () => {
+    const task = props.allTasks.find((item) => item.id === props.taskID);
+    return (task.isComplete === false) ? false : true;
+  };
+
+  //ADD HTTP TO LINK IF NEEDED
   const newLink =
     props.taskLink && props.taskLink.match(/(https|http):\/\//gm)
       ? props.taskLink
       : `http://${props.taskLink}`;
+  
+  // RENDER
   return (
     <>
-      <div className={`task-container ${props.taskIsComplete && "task-completed"}`}>
+      <div
+        className={`task-container ${ifCompleted() && "task-completed"}`}
+      >
         <div className="task-leftSide">
           {props.taskDate && (
             <div
               className={`task-date ${
-                props.taskIsComplete && "task-completed-strikethrough"
+                ifCompleted() && "task-completed-strikethrough"
               }`}
             >
               Due: {props.taskDate}
@@ -40,7 +58,7 @@ function Task(props) {
             <div className="check-box">
               <input
                 type="checkbox"
-                id={props.taskIndex}
+                id={props.taskID}
                 name="complete"
                 value="true"
                 onClick={completeTask}
@@ -50,7 +68,7 @@ function Task(props) {
 
             <div
               className={`task-title ${
-                props.taskIsComplete && "task-completed-strikethrough"
+                ifCompleted() && "task-completed-strikethrough"
               }`}
             >
               {props.taskTitle}
