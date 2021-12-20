@@ -12,6 +12,7 @@ function Layout() {
   //CREATING NEW TASK
   const [tasks, setTasks] = useState([]);
   const handleSubmit = (e) => {
+    (formFields.title) ?
     setTasks((crrntTasks) => [
       ...crrntTasks,
       {
@@ -22,8 +23,8 @@ function Layout() {
         tag: formFields.tag,
         isComplete: false,
       },
-    ]);
-    
+    ])
+    : e.preventDefault();
   }
 
   //EMPTY TASK FORM
