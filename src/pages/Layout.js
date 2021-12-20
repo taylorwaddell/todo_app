@@ -11,7 +11,7 @@ import SideBar from "../components/SideBar";
 function Layout() {
   //CREATING NEW TASK
   const [tasks, setTasks] = useState([]);
-  const handleSubmit = (e) =>
+  const handleSubmit = (e) => {
     setTasks((crrntTasks) => [
       ...crrntTasks,
       {
@@ -23,6 +23,8 @@ function Layout() {
         isComplete: false,
       },
     ]);
+    
+  }
 
   //EMPTY TASK FORM
   const initialState = {

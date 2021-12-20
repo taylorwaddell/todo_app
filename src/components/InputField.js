@@ -4,13 +4,24 @@ import "../assets/scss/components/InputField.scss";
 
 import tagOptions from "./_tagOptions";
 
-function InputField({ inputType = "", fieldName = "", placeHolder = "", value = "", isRequired = true, changeHandler }) {
+function InputField({
+  inputType = "",
+  fieldName = "",
+  placeHolder = "",
+  value = "",
+  isRequired = true,
+  isFocus = false,
+  changeHandler,
+}) {
   const givenPlaceHolder = placeHolder
     ? `${placeHolder}`
     : inputType === "text"
     ? "Text"
     : inputType === "link" && "dabomb.com";
-  const checkIfRequired = isRequired ? "required" : '';
+  const checkIfRequired = isRequired ? "required" : "";
+  const checkIfFocus = isFocus ? "autoFocus" : "";
+
+  //RENDER
   return (
     <label htmlFor={fieldName}>
       {inputType === "text" && (
@@ -22,10 +33,18 @@ function InputField({ inputType = "", fieldName = "", placeHolder = "", value = 
           value={value}
           onChange={(e) => changeHandler(e)}
           required={checkIfRequired}
+          autoFocus={checkIfFocus}
         ></input>
       )}
       {inputType === "date" && (
-        <input className="custom-input" type="date" name={fieldName} value={value} onChange={changeHandler}></input>
+        <input
+          className="custom-input"
+          type="date"
+          name={fieldName}
+          value={value}
+          onChange={changeHandler}
+          checkIfFocus
+        ></input>
       )}
       {inputType === "link" && (
         <input
@@ -36,10 +55,18 @@ function InputField({ inputType = "", fieldName = "", placeHolder = "", value = 
           value={value}
           onChange={changeHandler}
           required={checkIfRequired}
+          checkIfFocus
         ></input>
       )}
       {inputType === "tag" && (
-        <select className="custom-input" name={fieldName} value={value} onChange={changeHandler} required={checkIfRequired} >
+        <select
+          className="custom-input"
+          name={fieldName}
+          value={value}
+          checkIfFocus
+          onChange={changeHandler}
+          required={checkIfRequired}
+        >
           {tagOptions.map((option) => (
             <option value={option}>{option}</option>
           ))}

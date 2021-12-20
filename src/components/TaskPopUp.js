@@ -63,6 +63,7 @@ function TaskPopUp({
               value={formState.title}
               isRequired={true}
               changeHandler={handleFormChange}
+              isFocus={true}
             />
             <InputField
               inputType="link"
