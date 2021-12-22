@@ -1,13 +1,11 @@
-/*---DEPENDENCIES
-=============================*/
+//DEPENDENCIES
 import { PropTypes } from "prop-types";
 import "../assets/scss/components/TaskPopUp.scss";
 import { AiFillCloseCircle } from "react-icons/ai";
 import InputField from "./InputField";
 import Button from "./Button";
 
-/*---FUNCTION
-=============================*/
+//FUNCTION
 function TaskPopUp({
   handleClose,
   isEdit = false,

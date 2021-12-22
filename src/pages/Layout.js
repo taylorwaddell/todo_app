@@ -12,20 +12,20 @@ function Layout() {
   //CREATING NEW TASK
   const [tasks, setTasks] = useState([]);
   const handleSubmit = (e) => {
-    (formFields.title) ?
-    setTasks((crrntTasks) => [
-      ...crrntTasks,
-      {
-        id: formFields.id,
-        title: formFields.title,
-        link: formFields.link,
-        date: formFields.date,
-        tag: formFields.tag,
-        isComplete: false,
-      },
-    ])
-    : e.preventDefault();
-  }
+    formFields.title
+      ? setTasks((crrntTasks) => [
+          ...crrntTasks,
+          {
+            id: formFields.id,
+            title: formFields.title,
+            link: formFields.link,
+            date: formFields.date,
+            tag: formFields.tag,
+            isComplete: false,
+          },
+        ])
+      : e.preventDefault();
+  };
 
   //EMPTY TASK FORM
   const initialState = {
@@ -53,6 +53,8 @@ function Layout() {
   const handleAddClick = (e) => {
     setTaskPopIsOpen((taskPopIsOpen) => !taskPopIsOpen);
   };
+
+  //RENDER
   return (
     <div className="layout-container">
       <div className="main-content">
