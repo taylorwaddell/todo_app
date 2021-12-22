@@ -1,0 +1,17 @@
+@use "../abstracts/colors" as *;
+@use "../abstracts/fonts" as *;
+@use "../abstracts/styles" as *;
+
+.errorContainer {
+  padding: 0;
+  margin: 0;
+}
+
+.errorBox {
+  border: 2px solid $color-danger;
+  border-radius: $br-round;
+  background-color: $color-dark;
+  color: $color-light;
+  padding: 10px;
+  margin-bottom: 10px;
+}

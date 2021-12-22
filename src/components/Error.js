@@ -1,7 +1,13 @@
 import React from "react";
+import "../assets/scss/components/Error.scss";
 
-function Error({ error = "Whoops! Something doesn't look right." }) {
-  return <div className="errorBox"><p>{error}</p></div>
+function Error({ errors = ["Whoops! Something doesn't look right."] }) {
+  const errorsList = errors.map((err) => (
+    <p className="errorBox" key={errors.length + 1}>
+      {err}
+    </p>
+  ));
+  return <div className="errorContainer">{errorsList}</div>;
 }
 
 export default Error;

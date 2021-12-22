@@ -46,7 +46,7 @@ function Layout() {
   const [formFields, setFormFields] = useState({ ...initialState });
 
   //FORM VALIDATION ERROR STATE
-  const [hasFormError, setHasFormError] = useState(false);
+  const [hasFormError, setHasFormError] = useState([]);
 
   //OPEN TASK POP UP
   const [taskPopIsOpen, setTaskPopIsOpen] = useState(false);
