@@ -43,7 +43,7 @@ function InputField({
           name={fieldName}
           value={value}
           onChange={changeHandler}
-          checkIfFocus
+          autoFocus={checkIfFocus}
         ></input>
       )}
       {inputType === "link" && (
@@ -55,7 +55,7 @@ function InputField({
           value={value}
           onChange={changeHandler}
           required={checkIfRequired}
-          checkIfFocus
+          autoFocus={checkIfFocus}
         ></input>
       )}
       {inputType === "tag" && (
@@ -63,12 +63,12 @@ function InputField({
           className="custom-input"
           name={fieldName}
           value={value}
-          checkIfFocus
+          autoFocus={checkIfFocus}
           onChange={changeHandler}
           required={checkIfRequired}
         >
-          {tagOptions.map((option) => (
-            <option value={option}>{option}</option>
+          {tagOptions.map((option, i) => (
+            <option key={i+1} value={option}>{option}</option>
           ))}
         </select>
       )}
